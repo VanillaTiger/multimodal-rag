@@ -35,7 +35,7 @@ def scrape_page(url):
     return results
 
 def create_file():
-    with open('data_img_str_url.csv', 'w', newline='') as file:
+    with open('data_img_str_url_test.csv', 'w', newline='') as file:
         writer = csv.writer(file)
         writer.writerow(["title", "content", "images","article_url"])
 

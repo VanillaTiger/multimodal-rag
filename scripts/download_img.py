@@ -13,13 +13,13 @@ def download_images_from_csv(csv_file_path, image_column, output_dir):
             if image_url:
                 print(image_url)
                 try:
-                    subprocess = os.system(f"wget {image_url}")
+                    subprocess = os.system(f"wget -P {output_dir} {image_url}")
                 except requests.RequestException as e:
                     print(f"Error downloading {image_url}: {e}")
 
 # Example usage
-csv_file_path = '/home/aszummer/Documents/vanilla_tiger_solutions/softserve/multimodal_rag/data_img_str.csv'
+csv_file_path = 'data/data_img_str.csv'
 image_column = 'images'
-output_dir = '/home/aszummer/Documents/vanilla_tiger_solutions/softserve/multimodal_rag/downloaded_images'
+output_dir = 'data/downloaded_images'
 
 download_images_from_csv(csv_file_path, image_column, output_dir)

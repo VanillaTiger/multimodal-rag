@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import csv
+import os
 
 def scrape_page(url):
     response = requests.get(url)
@@ -35,12 +36,14 @@ def scrape_page(url):
     return results
 
 def create_file():
-    with open('data_img_str_url_test.csv', 'w', newline='') as file:
+    if not os.path.exists("data"):
+        os.makedirs("data")
+    with open('data/data_img_str_url.csv', 'w', newline='') as file:
         writer = csv.writer(file)
         writer.writerow(["title", "content", "images","article_url"])
 
 def save_to_csv(data):
-    with open('data_img_str_url.csv', 'a', newline='') as file:
+    with open('data/data_img_str_url.csv', 'a', newline='') as file:
         writer = csv.writer(file)
         for d in data:
             writer.writerow([d["title"], d["content"], d["images"], d["article_url"]])

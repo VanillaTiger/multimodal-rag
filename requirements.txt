@@ -1,0 +1,11 @@
+langchain=0.3.18
+langchain-community=0.3.17
+openai=1.61.1
+chromadb=0.6.3
+tiktoken=0.8.0
+langchain-chroma=0.2.1
+langchain-openai=0.3.4
+
+requests
+beautifulsoup4
+csv

@@ -5,7 +5,7 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 
 def load_documents_from_csv():
     # Initialize the CSVLoader with the path to your CSV file
-    loader = CSVLoader(file_path='data_img_str_url.csv',metadata_columns=['images','article_url'])
+    loader = CSVLoader(file_path='data_img_str_url.csv',metadata_columns=['images','article_url', 'title'])
 
     # Load the documents
     documents = loader.load()

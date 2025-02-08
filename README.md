@@ -22,6 +22,9 @@ python3 scripts/download_img.py
 ```
 
 3. in secrets folder create **secret.txt** file that have OPENAI KEY in the first line.
+
+
+secrets/secrets.txt
 ```
 **-****-*****************************************************************
 ```

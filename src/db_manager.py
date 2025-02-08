@@ -2,10 +2,11 @@ from langchain_community.document_loaders import CSVLoader
 from langchain_chroma import Chroma
 from langchain_openai import OpenAIEmbeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
+import argparse
 
 def load_documents_from_csv():
     # Initialize the CSVLoader with the path to your CSV file
-    loader = CSVLoader(file_path='data_img_str_url.csv',metadata_columns=['images','article_url'])
+    loader = CSVLoader(file_path='data/data_img_str_url.csv',metadata_columns=['images','article_url', 'title'])
 
     # Load the documents
     documents = loader.load()
@@ -57,3 +58,14 @@ def load_db():
                     embedding_function=embedding)
     
     return vectordb
+
+def parse_args():
+    parser = argparse.ArgumentParser(description="Database Manager")
+    parser.add_argument('--create_db', action='store_true', help='Create the database')
+    return parser.parse_args()
+
+if __name__ == "__main__":
+    args = parse_args()
+
+    if args.create_db:
+        create_db()

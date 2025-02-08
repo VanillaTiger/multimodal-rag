@@ -1,4 +1,4 @@
-from db_manager import load_db
+from src.db_manager import load_db
 from langchain_openai import OpenAI
 from langchain.chains import RetrievalQA
 
@@ -17,7 +17,7 @@ def process_llm_response(llm_response):
     
     return result
 
-def get_response(query):
+def create_retrieval():
     vectordb = load_db()
     retriever =vectordb.as_retriever(search_kwargs={"k": 3})
     # create the chain to answer questions 
@@ -25,6 +25,12 @@ def get_response(query):
                                     chain_type="stuff", 
                                     retriever=retriever, 
                                     return_source_documents=True)
+    
+    return qa_chain
+
+
+def get_response(query, qa_chain):
+
     
     # full example
     # query = "Who is Mustafa Suleyman?"

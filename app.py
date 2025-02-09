@@ -2,11 +2,15 @@ from src.retrieval import create_retrieval, get_response
 import streamlit as st
 import time
 import pandas as pd
+from loguru import logger
 
 from src.utils.utils import read_openai_api_key_to_environ
 
 read_openai_api_key_to_environ()
+logger.info("API key read successfully")
+logger.info("Creating the QA chain for retrieval")
 qa_chain = create_retrieval()
+logger.info("QA chain and DB loaded")
 
 # Load the CSV file
 csv_file = 'data/data_img_str_url.csv'
@@ -32,7 +36,7 @@ def response_generator(result):
 
 def source_generator(sources):
 
-    response = "Sources:   \n  \n"
+    response = "Source:   \n  \n"
     
     for source in sources:
         response += f"  \n  \n title = {source[4]}  \n source_file = {source[0]} in row = {source[1]}  \n article_url = {source[2]}  \nimages = {source[3]} \n\n "

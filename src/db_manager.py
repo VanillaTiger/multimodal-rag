@@ -8,6 +8,9 @@ from loguru import logger
 from src.utils.utils import read_openai_api_key_to_environ
 
 def load_documents_from_csv():
+    """
+    Load the documents from the CSV file
+    """
     # Initialize the CSVLoader with the path to your CSV file
     loader = CSVLoader(file_path='data/data_img_str_url.csv',metadata_columns=['images','article_url', 'title'])
 
@@ -18,6 +21,9 @@ def load_documents_from_csv():
     return documents
 
 def print_first_loaded_document():
+    """
+    Print the first loaded document
+    """
 
     documents = load_documents_from_csv()
 
@@ -27,6 +33,9 @@ def print_first_loaded_document():
         break
 
 def create_db():
+    """
+    create the database in local directory
+    """
     
     read_openai_api_key_to_environ()
     documents = load_documents_from_csv()
@@ -50,6 +59,9 @@ def create_db():
     logger.info(f"Database created successfully in {persist_directory}")
 
 def load_db():
+    """
+    Load the database from local directory
+    """
     # Load the vector store from disk
     persist_directory = 'db'
 

@@ -1,6 +1,6 @@
 import sys
 from retrieval import get_response
-from utils.utils import read_openai_api_key_to_environ
+from utils.utils import read_secret_keys_to_environ
 
 def print_response(response):
     for key,value in response.items():
@@ -8,7 +8,7 @@ def print_response(response):
 
 def main():
 
-    read_openai_api_key_to_environ()
+    read_secret_keys_to_environ()
 
     if len(sys.argv) < 2:
         print("Please provide an input query.")

@@ -5,7 +5,7 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 import argparse
 from loguru import logger
 
-from src.utils.utils import read_openai_api_key_to_environ
+from src.utils.utils import read_secret_keys_to_environ
 
 def load_documents_from_csv():
     """
@@ -37,7 +37,7 @@ def create_db():
     create the database in local directory
     """
     
-    read_openai_api_key_to_environ()
+    read_secret_keys_to_environ()
     documents = load_documents_from_csv()
     
     

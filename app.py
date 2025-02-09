@@ -4,9 +4,9 @@ import time
 import pandas as pd
 from loguru import logger
 
-from src.utils.utils import read_openai_api_key_to_environ
+from src.utils.utils import read_secret_keys_to_environ
 
-read_openai_api_key_to_environ()
+read_secret_keys_to_environ()
 logger.info("API key read successfully")
 logger.info("Creating the QA chain for retrieval")
 qa_chain = create_retrieval()

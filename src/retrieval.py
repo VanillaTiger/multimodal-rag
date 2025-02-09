@@ -11,7 +11,7 @@ def process_llm_response(llm_response):
     result["answer"]= llm_response['result']
     for source in llm_response["source_documents"]:
         # print(source.metadata['source'], source.metadata['row'], source.metadata['article_url'])
-        sources_list.append([source.metadata['source'], source.metadata['row'], source.metadata['article_url'], source.metadata['images']])
+        sources_list.append([source.metadata['source'], source.metadata['row'], source.metadata['article_url'], source.metadata['images'], source.metadata['title']])
     
     result["sources"] = sources_list
     

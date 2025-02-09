@@ -173,3 +173,5 @@ cython_debug/
 secrets/
 /venv*
 data/*
+data_org/*
+db_org/*

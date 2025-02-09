@@ -3,6 +3,9 @@ from langchain_chroma import Chroma
 from langchain_openai import OpenAIEmbeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 import argparse
+from loguru import logger
+
+from src.utils.utils import read_openai_api_key_to_environ
 
 def load_documents_from_csv():
     # Initialize the CSVLoader with the path to your CSV file
@@ -10,6 +13,7 @@ def load_documents_from_csv():
 
     # Load the documents
     documents = loader.load()
+    logger.info(f"Loaded {len(documents)} documents from CSV")
 
     return documents
 
@@ -24,6 +28,7 @@ def print_first_loaded_document():
 
 def create_db():
     
+    read_openai_api_key_to_environ()
     documents = load_documents_from_csv()
     
     
@@ -42,9 +47,7 @@ def create_db():
                                     embedding=embedding,
                                     persist_directory=persist_directory)
     
-    # persiste the db to disk
-    vectordb.persist()
-    vectordb = None
+    logger.info(f"Database created successfully in {persist_directory}")
 
 def load_db():
     # Load the vector store from disk
@@ -56,6 +59,8 @@ def load_db():
     # Now we can load the persisted database from disk, and use it as normal. 
     vectordb = Chroma(persist_directory=persist_directory, 
                     embedding_function=embedding)
+    
+    logger.info(f"Database loaded successfully from {persist_directory}")
     
     return vectordb
 

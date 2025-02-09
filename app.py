@@ -35,7 +35,7 @@ def source_generator(sources):
     response = "Sources:   \n  \n"
     
     for source in sources:
-        response += f"  \n  \n source_file = {source[0]} in row = {source[1]}  \n article_url = {source[2]}  \nimages = {source[3]} \n\n "
+        response += f"  \n  \n title = {source[4]}  \n source_file = {source[0]} in row = {source[1]}  \n article_url = {source[2]}  \nimages = {source[3]} \n\n "
 
     return response
 
@@ -76,7 +76,6 @@ with chat_tab:
                 st.image(source[3], caption="image associated with the article")
         # Add assistant response to chat history
         st.session_state.messages.append({"role": "assistant", "content": response})
-
 
 with data_tab:
 

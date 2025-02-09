@@ -31,7 +31,7 @@ secrets/secrets.txt
 
 4. Create Vector Database
 ```
-python3 src/db_manager.py --create_db
+python3 -m src.db_manager --create_db
 ```
 
 5. Run streamlit APP

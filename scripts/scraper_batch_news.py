@@ -2,12 +2,17 @@ import requests
 from bs4 import BeautifulSoup
 import csv
 import os
+from loguru import logger
+from tqdm import tqdm
 
 def scrape_page(url):
+    """
+    scrape the page and return the title, content, images and article_url from given url to the batch issue
+    """
     response = requests.get(url)
     if response.status_code != 200:
-        print("Failed to retrieve the page")
-        return
+        # print("Failed to retrieve the page")
+        return 0
     
     soup = BeautifulSoup(response.text, 'html.parser')
     results = []
@@ -36,13 +41,22 @@ def scrape_page(url):
     return results
 
 def create_file():
+    """
+    create the file to store the data with headers
+    """
     if not os.path.exists("data"):
         os.makedirs("data")
     with open('data/data_img_str_url.csv', 'w', newline='') as file:
         writer = csv.writer(file)
         writer.writerow(["title", "content", "images","article_url"])
+    
+    logger.info("File created successfully")
+    
 
 def save_to_csv(data):
+    """
+    save the data to the csv file
+    """
     with open('data/data_img_str_url.csv', 'a', newline='') as file:
         writer = csv.writer(file)
         for d in data:
@@ -52,7 +66,12 @@ def save_to_csv(data):
 if __name__ == "__main__":
     create_file()
     # url = "https://www.deeplearning.ai/the-batch/issue-286/"
-    for i in range(286, 0, -1):
+    logger.info("Start scraping 286 issues of The Batch")
+    for i in tqdm(range(286, 0, -1)):
         url = f"https://www.deeplearning.ai/the-batch/issue-{i}/"
         data = scrape_page(url)
-        save_to_csv(data)
+        if data:
+            save_to_csv(data)
+    logger.info("Finished scraping 286 issues of The Batch")
+    
+    

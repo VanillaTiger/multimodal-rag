@@ -1,8 +1,8 @@
-import os
+import os, yaml
 
-def read_openai_api_key_to_environ():
-    # Read the API key from secrets.txt
-    with open('secrets/secrets.txt', 'r') as file:
-        api_key = file.readline().strip()
-
-    os.environ["OPENAI_API_KEY"] = api_key
+def read_secret_keys_to_environ():
+    # Read the secrets.yaml file and export each variable
+    with open('secrets/secrets.yaml', 'r') as file:
+        secrets = yaml.safe_load(file)
+        for key, value in secrets.items():
+            os.environ[key] = str(value)

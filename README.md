@@ -16,6 +16,8 @@ Repository already contains scrapped data and have access to vector db if you cl
 python3 scripts/scraper_batch_news.py
 ```
 
+![alt text](.github_data/scraping.png)
+
 2. To download all images from the scraped data
 
 ```python
@@ -38,6 +40,9 @@ OPENAI_API_KEY: "YOUR_API_KEY
 ```
 python3 -m src.db_manager --create_db
 ```
+
+![alt text](.github_data/databse_creation.png)
+
 ### If you just want to check the RAG run 5-7
 
 5. in secrets folder create **secret.yaml** file.
@@ -74,3 +79,15 @@ or change the tab to "Data" and view the source data
 8. Go to LangSmith to check your Call trace
 
 ![alt text](.github_data/tracing.png)
+
+### If you want to run evaluation
+Ensure you provided ragas app token in secrets file
+
+```
+python3 -m src.evaluator
+```
+
+![alt text](.github_data/evaluation.png)
+
+
+![alt text](.github_data/ragas.png)

@@ -24,16 +24,17 @@ python3 scripts/scraper_batch_news.py
 python3 scripts/download_img.py
 ```
 
-3.  in secrets folder create **secret.yaml** file.
+3.  in main folder create **.env** file.
 
 
-secrets/secrets.yaml
+.env
 ```
-LANGSMITH_TRACING: true
-LANGSMITH_ENDPOINT: "https://api.smith.langchain.com"
-LANGSMITH_API_KEY: "YOUR_API_KEY"
-LANGSMITH_PROJECT: "softserve-multimodal-rag"
-OPENAI_API_KEY: "YOUR_API_KEY
+LANGSMITH_TRACING= true
+LANGSMITH_ENDPOINT= "https://api.smith.langchain.com"
+LANGSMITH_API_KEY= YOUR_API_KEY
+LANGSMITH_PROJECT= "softserve-multimodal-rag"
+RAGAS_APP_TOKEN= YOUR_API_KEY
+OPENAI_API_KEY= YOUR_API_KEY
 ```
 
 4. Create Vector Database
@@ -45,16 +46,16 @@ python3 -m src.db_manager --create_db
 
 ### If you just want to check the RAG run 5-7
 
-5. in secrets folder create **secret.yaml** file.
+5.  in main folderr create **.env** file.
 
-
-secrets/secrets.yaml
+.env
 ```
-LANGSMITH_TRACING: true
-LANGSMITH_ENDPOINT: "https://api.smith.langchain.com"
-LANGSMITH_API_KEY: "YOUR_API_KEY"
-LANGSMITH_PROJECT: "softserve-multimodal-rag"
-OPENAI_API_KEY: "YOUR_API_KEY
+LANGSMITH_TRACING= true
+LANGSMITH_ENDPOINT= "https://api.smith.langchain.com"
+LANGSMITH_API_KEY= YOUR_API_KEY
+LANGSMITH_PROJECT= "softserve-multimodal-rag"
+RAGAS_APP_TOKEN= YOUR_API_KEY
+OPENAI_API_KEY= YOUR_API_KEY
 ```
 
 6. Run streamlit APP
